@@ -23,13 +23,7 @@ gulp.task('styles', function () {
 
 gulp.task('watch', function () {
       gulp.watch(stylusPath + '/**/*.styl', ['styles']);
-}); 
-
-// gulp.task('prefix', function () {
-//     gulp.src(cssPath + '/*.css')
-//         .pipe(prefix(["last 8 version", "> 1%", "ie 8"]))
-//         .pipe(gulp.dest(cssPath));
-// });
+});
 
 
-gulp.task('default', ['watch']);//, 'prefix'
+gulp.task('default', ['watch']);
