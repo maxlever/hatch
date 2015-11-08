@@ -1,0 +1,9 @@
+{
+  "firebase": "hackduke-hatch",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "hackduke",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxlever/hatch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxlever/hatch/issues"
+  },
+  "homepage": "https://github.com/maxlever/hatch#readme",
+  "dependencies": {
+    "firebase": "^2.3.1",
+    "gulp": "^3.9.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylus": "^2.1.0",
+    "jeet": "^6.1.2",
+    "nib": "^1.1.0",
+    "rupture": "^0.6.1",
+    "stylus": "^0.52.4",
+    "stylus-type-utils": "0.0.3"
+  }
+}
