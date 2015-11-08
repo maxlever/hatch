@@ -250,7 +250,8 @@
             e.preventDefault();
             var answers = page.find('form').serializeObject();
             var results = getResults(answers);
-
+            debugger;
+                
             userRef.set({results: results}, function onComplete() {
 
                 // show the message if write is successful
@@ -290,6 +291,18 @@
                 return;
             }
             console.log(user.results);
+            $('cat').hide();
+            var isResults = [false, false, false, false];
+            user.results.forEach(function (el, idx, arr) {
+                isResults[idx] = el > 0.5;
+            });
+            var shownCatNames = categories.filter(function (el, idx, arr) {
+                return isResults[idx];
+            });
+            shownCatNames.forEach(function(el) {
+                $('#' + el).show();
+            });
+            
             // TODO: SHOW AND HIDE RESULTS
         });
     };
