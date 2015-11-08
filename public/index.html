@@ -118,7 +118,27 @@
     pageHome
   </section>
   <section id="pageQuestions">
-    pageQuestions
+     <form id="frmQuestions" role="form">
+      <div class="question" id="q1">
+        <label class="question__label" for="domestic_abuse[0]">Do you feel anxious or nervous when you are around your partner?</label>
+        <br>
+        <input class="question__radio" type="radio" name="domestic_abuse[0]" value="yes">Yes<br>
+        <input class="question__radio" type="radio" name="domestic_abuse[0]" value="no">No
+      </div>
+      <div class="question" id="q2">
+        <label class="question__label" for="domestic_abuse[1]">Do you watch what you are doing in order to avoid making your partner angry or upset?</label>
+        <br>
+        <input class="question__radio" type="radio" name="domestic_abuse[1]" value="yes">Yes<br>
+        <input class="question__radio" type="radio" name="domestic_abuse[1]" value="no">No
+      </div>
+      <div class="question" id="q3">
+        <label class="question__label" for="sexual_discrimination[0]">Do you feel that your workplace has an inclusive culture for both men and women?</label>
+        <br>
+        <input class="question__radio" type="radio" name="sexual_discrimination[0]" value="yes">Yes<br>
+        <input class="question__radio" type="radio" name="sexual_discrimination[0]" value="no">No
+      </div>
+      <button type="submit">Submit</button>
+    </form>
   </section>
   <section id="pageCategories">
     pageCategories

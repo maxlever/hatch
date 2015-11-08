@@ -144,8 +144,8 @@
     
     controllers.login = function (page) {
         // Form submission for logging in
-        page.children('form').on('submit', function (e) {
-            var userAndPass = page.children('form').serializeObject();
+        page.find('form').on('submit', function (e) {
+            var userAndPass = page.find('form').serializeObject();
             var loginPromise = authWithPassword(userAndPass);
             e.preventDefault();
 
@@ -162,9 +162,9 @@
     controllers.register = function (page) {
 
         // Form submission for registering
-        page.children('form').on('submit', function (e) {
+        page.find('form').on('submit', function (e) {
 
-            var userAndPass = page.children('form').serializeObject();
+            var userAndPass = page.find('form').serializeObject();
             var loginPromise = createUserAndLogin(userAndPass);
             e.preventDefault();
 
@@ -181,7 +181,7 @@
 
         // If no current user send to register page
         if (!user) {
-            routeTo('register');
+            routeTo('login');
             return;
         }
 
@@ -194,14 +194,14 @@
             }
 
             // set the fields
-            page.children('form').find('#txtName').val(user.name);
-            page.children('form').val(user.favoriteDinosaur);
+            // page.children('form').find('#txtName').val(user.name);
+            // page.children('form').val(user.favoriteDinosaur);
         });
 
         // Save user's info to Firebase
-        page.children('form').on('submit', function (e) {
+        page.find('form').on('submit', function (e) {
             e.preventDefault();
-            var userInfo = page.children('form').serializeObject();
+            var userInfo = page.find('form').serializeObject();
 
             userRef.set(userInfo, function onComplete() {
 
@@ -222,7 +222,7 @@
         var userRef;
         // If no current user send to register page
         if (!user) {
-            routeTo('register');
+            routeTo('login');
             return;
         }
     };
@@ -232,9 +232,37 @@
         var userRef;
         // If no current user send to register page
         if (!user) {
-            routeTo('register');
+            routeTo('login');
             return;
         }
+
+        // Load user info
+        userRef = rootRef.child('users').child(user.uid);
+        userRef.once('value', function (snap) {
+            var user = snap.val();
+            if (!user) {
+                return;
+            }
+        });
+
+        // Save user's info to Firebase
+        page.find('form').on('submit', function (e) {
+            e.preventDefault();
+            var answers = page.find('form').serializeObject();
+            var results = getResults(answers);
+
+            userRef.set({results: results}, function onComplete() {
+
+                // show the message if write is successful
+                showAlert({
+                    title: 'Successfully submitted!',
+                    detail: '',
+                    className: 'alert-success'
+                });
+                routeTo('results');
+
+            });
+        });
     };
     controllers.categories = function (page) {
         // Check the current user
@@ -242,7 +270,7 @@
         var userRef;
         // If no current user send to register page
         if (!user) {
-            routeTo('register');
+            routeTo('login');
             return;
         }
     };
@@ -252,9 +280,18 @@
         var userRef;
         // If no current user send to register page
         if (!user) {
-            routeTo('register');
+            routeTo('login');
             return;
         }
+        userRef = rootRef.child('users').child(user.uid);
+        userRef.once('value', function (snap) {
+            var user = snap.val();
+            if (!user) {
+                return;
+            }
+            console.log(user.results);
+            // TODO: SHOW AND HIDE RESULTS
+        });
     };
     controllers.info = function (page) {
         // Check the current user
@@ -262,7 +299,7 @@
         var userRef;
         // If no current user send to register page
         if (!user) {
-            routeTo('register');
+            routeTo('login');
             return;
         }
     };
@@ -291,17 +328,38 @@
             "The pleasure and joy has gone out of my life.",
             "I have lost interest in aspects of life that used to be important to me."
         ]
-    ]
-
+    ];
+    var questionsArr = [
+        [
+            1,2,3,4,5
+        ],
+        [
+            6,7,8
+        ],
+        [
+            9,10,11
+        ],
+        [
+            12,13,14
+        ]
+    ];
     var categories = [
-        "Domestic Abuse",
-        "Sexual Discrimination",
-        "Eating Disorders & Body Image",
-        "Depression"
-    ]
+        "domestic_abuse",
+        "sexual_discrimination",
+        "eating_disorders_and_body_image",
+        "depression"
+    ];
 
-    var results = [null, null, null, null]
-
+    
+    function getResults(answers) {
+        var results = [0, 0, 0, 0];
+        Object.keys(answers).forEach(function (key) {
+           var idx = categories.indexOf(key);
+           results[idx] = answers[key].reduce(function(countMap, word) {countMap[word] = ++countMap[word] || 1;return countMap}, {})["yes"]
+                            / answers[key].length;
+        });
+        return results;
+    }
     /// Routing
     ////////////////////////////////////////
 
@@ -315,7 +373,7 @@
         // current user then go to the register page and
         // stop executing
         if (pageRoute.authRequired && !currentUser) {
-            routeTo('register');
+            routeTo('login');
             return;
         }
 
@@ -391,4 +449,4 @@
     });
 
 
-}(window.jQuery, window.Firebase, window.Path))
+}(window.jQuery, window.Firebase, window.Path));
