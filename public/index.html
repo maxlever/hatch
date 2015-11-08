@@ -5,17 +5,141 @@
     <title>Hatch</title>
 </head>
 <body>
-<section class="container">
-    <div class="login">
-      <h1>Login</h1>
-      <form method="post" action="index.html">
-        <p><input type="text" name="login" value="" placeholder="Username"></p>
-        <p><input type="password" name="password" value="" placeholder="Password"></p>
-        <p class="submit"><input type="submit" name="commit" value="Login"></p>
-      </form>
+  <h1>MENU:</h1>
+  <ul class="menu">
+    <li><a href="#/">login</a></li>
+    <li><a href="#/logout">logout</a></li>
+    <li><a href="#/register">register</a></li>
+    <li><a href="#/profile">profile</a></li>
+    <li><a href="#/home">home</a></li>
+    <li><a href="#/questions">questions</a></li>
+    <li><a href="#/categories">categories</a></li>
+    <li><a href="#/results">results</a></li>
+    <li><a href="#/info">info</a></li>
+  </ul>
+  <section id="pageLogin">
+    <div class="container">
+      <svg class="login__svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       width="308.298px" height="226.689px" viewBox="0 0 308.298 226.689" enable-background="new 0 0 308.298 226.689"
+       xml:space="preserve">
+        <text transform="matrix(1 0 0 1 0 197.6211)" fill="#FD9C4D" font-family="'Phosphate-Solid'" font-size="100" letter-spacing="5">HATCH</text>
+        <text transform="matrix(1 0 0 1 3.6665 221.6387)" stroke="#A7A9AC" stroke-width="0.75" stroke-miterlimit="10" font-family="'Code-Light'" font-size="23.1465" letter-spacing="1">A SAFE HAVEN FOR WOMEN</text>
+        <g>
+        <g>
+        <g>
+        <path fill="#FD9C4D" d="M101.861,1.646l0.317,0.317l0.428-0.428C102.357,1.572,102.107,1.608,101.861,1.646z"/>
+        </g>
+        </g>
+        <g>
+        <g>
+        <path fill="#FD9C4D" d="M224.787,13.789l-11.286,11.288L192.744,4.32l-20.756,20.756L146.912,0l-25.076,25.076L103.71,6.95
+        L85.584,25.076L74.837,14.33c-5.989,7.123-9.035,17.721-9.035,33.494c0,37.213,34.311,70.897,81.153,70.897
+        c52.277,0,86.771-33.789,86.771-74.654C233.728,29.992,230.545,20.367,224.787,13.789z"/>
+        </g>
+        </g>
+        </g>
+      </svg>
+      <div class="login__bottom">
+        <div class="login__form">
+          <h1 class="login__form__title">Login</h1>
+          <form id="frmLogin" role="form">
+              <div class="form-group">
+                  <label for="txtEmail">Email address</label>
+                  <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+              </div>
+              <div class="form-group">
+                  <label for="txtPass">Password</label>
+                  <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+              </div>
+              <button type="submit" >Login</button>
+          </form>
+        </div>
+        <div class="login__register-link">
+          <a class="login__register-link__link" href="#/register">or sign up</a>
+        </div>
+      </div>
     </div>
-    <a href="/register">or sign up</a>
   </section>
-  <script type="text/javascript" src="js/main.js"></script>
+  <section id="pageRegister">
+    <div class="container">
+      <svg class="register__svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       width="719.364px" height="186.324px" viewBox="0 0 719.364 186.324" enable-background="new 0 0 719.364 186.324"
+       xml:space="preserve">
+      <g>
+      <g>
+      <g>
+      <path fill="#FD9C4D" d="M36.058,25.669l0.317,0.317l0.428-0.428C36.555,25.595,36.304,25.631,36.058,25.669z"/>
+      </g>
+      </g>
+      <g>
+      <g>
+      <path fill="#FD9C4D"
+      d="M158.984,37.811l-11.286,11.288l-20.757-20.756l-20.756,20.756L81.109,24.022L56.033,49.099
+      L37.907,30.973L19.781,49.099L9.035,38.353C3.045,45.475,0,56.073,0,71.847c0,37.213,34.311,70.897,81.153,70.897
+      c52.277,0,86.771-33.789,86.771-74.654C167.925,54.015,164.742,44.39,158.984,37.811z"/>
+      </g>
+      </g>
+      </g>
+      <text transform="matrix(1 0 0 1 200.6885 140.2261)" fill="#FD9C4D" font-family="'Phosphate-Solid'" font-size="168.2386" letter-spacing="8">HATCH</text>
+      </svg>
+      <div class="register__bottom">
+        <div class="register__form">
+          <h2 class="register__form__title">Register</h2>
+          <form id="frmRegister" role="form">
+            <div class="form-group">
+                <label for="txtRegEmail">Email address</label>
+                <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+            </div>
+            <div class="form-group">
+                <label for="txtRegPass">Password</label>
+                <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+            </div>
+            <button type="submit">Register</button>
+          </form>
+        </div>
+        <div id="register__intro">
+          <p>
+            Welcome to Hatch!
+            We provide helpful information and support to women facing these common issues: eating disorders, depression, discrimination, domestic abuse, sexual violence. From the comfort of your own home, you have the ability to gain the help you need in a private manner.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="pageLogout">
+    <form id="frmLogout" role="form">
+         <h2>You are logged out!</h2>
+    </form>
+  </section>
+  <section id="pageProfile">
+    pageProfile
+  </section>
+  <section id="pageHome">
+    pageHome
+  </section>
+  <section id="pageQuestions">
+    pageQuestions
+  </section>
+  <section id="pageCategories">
+    pageCategories
+  </section>
+  <section id="pageResults">
+    pageResults
+  </section>
+  <section id="pageInfo">
+    pageInfo
+  </section>
+  <div class="alerts">
+    <h3 class="alerts__title">Alerts:</h3>
+    <div id="alert" class="alert" role="alert">
+      <h4 id="alert-title"></h4>
+      <p id="alert-detail"></p>
+    </div>
+  </div>
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.0.0/jquery.serialize-object.compiled.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/path.js/0.8.4/path.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
