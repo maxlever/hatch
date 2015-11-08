@@ -250,8 +250,7 @@
             e.preventDefault();
             var answers = page.find('form').serializeObject();
             var results = getResults(answers);
-            debugger;
-                
+
             userRef.set({results: results}, function onComplete() {
 
                 // show the message if write is successful
@@ -291,7 +290,7 @@
                 return;
             }
             console.log(user.results);
-            $('cat').hide();
+            $('.cat').hide();
             var isResults = [false, false, false, false];
             user.results.forEach(function (el, idx, arr) {
                 isResults[idx] = el > 0.5;
@@ -368,8 +367,9 @@
         var results = [0, 0, 0, 0];
         Object.keys(answers).forEach(function (key) {
            var idx = categories.indexOf(key);
-           results[idx] = answers[key].reduce(function(countMap, word) {countMap[word] = ++countMap[word] || 1;return countMap}, {})["yes"]
-                            / answers[key].length;
+           var num = answers[key].reduce(function(countMap, word) {countMap[word] = ++countMap[word] || 1;return countMap}, {"yes": 0, "no": 0})["yes"] || 0;
+           results[idx] = num
+                            / answers[key].length || 0;
         });
         return results;
     }
